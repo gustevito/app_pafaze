@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/themes/darktheme.dart';
-import 'constants/colors.dart';
 import 'screens/home.dart';
 
 void main() {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/constants/colors.dart';
 import 'package:myapp/pages/themes/darktheme.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -48,7 +47,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Theme.of(context).colorScheme.primary,
                 size: 30,
               ),
-              Text(widget.title),
+              Text(
+                widget.title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 14.0,
+                ),
+              ),
               Icon(
                 Icons.more_vert,
                 color: Theme.of(context).colorScheme.primary,
