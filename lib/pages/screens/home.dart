@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/screens/add.dart';
 import 'package:myapp/pages/themes/darktheme.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -70,13 +71,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   'Adicione a sua primeira nota para visualizá-la aqui!'),
             ] else
               ..._noteContainer,
-            TextField(
-              controller: _controller,
-            ),
-            Text(
-              'You have pushed the button this many times:',
-              style: Theme.of(context).textTheme.displayMedium,
-            ),
             /*Text(
               '$_notePlaceholder',
               style: Theme.of(context).textTheme.displayLarge,
@@ -85,7 +79,22 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementNote,
+        onPressed: () async {
+          String? result = await showModalBottomSheet<String>(
+            context: context,
+            isScrollControlled: true,
+            builder: (BuildContext context) {
+              return Padding(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: AddTodo(),
+              );
+            },
+          );
+          debugPrint('f8787 - $result');
+          _controller.text = result ?? '';
+          _incrementNote();
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
