@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/constants/colors.dart';
+import 'package:myapp/pages/themes/darktheme.dart';
 
 class MyHomePage extends StatefulWidget {
   final String title;
@@ -36,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     return Scaffold(
+      backgroundColor: pzGrey,
       appBar: AppBar(
           backgroundColor: pzBlack,
           title: Row(
@@ -43,13 +45,13 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               Icon(
                 Icons.menu,
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.primary,
                 size: 30,
               ),
               Text(widget.title),
               Icon(
                 Icons.more_vert,
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.primary,
                 size: 30,
               )
             ],

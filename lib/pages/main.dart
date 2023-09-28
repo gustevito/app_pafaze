@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/pages/themes/darktheme.dart';
 import 'constants/colors.dart';
 import 'screens/home.dart';
 
@@ -14,14 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      darkTheme: darkTheme,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        textTheme: TextTheme(
-            displayLarge: GoogleFonts.poppins(fontSize: 26),
-            displayMedium: GoogleFonts.poppins(fontSize: 18),
-            displaySmall: GoogleFonts.poppins(fontSize: 14)),
-        useMaterial3: true,
-      ),
+      theme: darkTheme,
       home: const MyHomePage(title: 'pafaze'),
     );
   }
