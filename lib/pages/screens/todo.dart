@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/themes/darktheme.dart';
 
 class TodoWidget extends StatefulWidget {
   String message;
@@ -39,17 +40,17 @@ class _MyWidgetState extends State<TodoWidget>
           ),
           child: Row(
             children: [
-              Icon(
+              const Icon(
                 Icons.note,
-                color: Colors.blue,
+                color: pzWhite,
                 size: 24.0,
               ),
               SizedBox(width: 16.0),
               Expanded(
                 child: Text(
                   widget.message,
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 255, 255, 255),
+                  style: const TextStyle(
+                    color: pzWhite,
                   ),
                 ),
               ),

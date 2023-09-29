@@ -8,6 +8,7 @@ const Color pzBlack = Color.fromARGB(255, 34, 34, 34); // Navbar
 const Color pzGrey = Color.fromARGB(255, 48, 48, 48); // Background
 
 const Color pzYellow = Color(0xFFF3C048);
+const Color pzWhite = Color(0xFFFFFFFF);
 
 ThemeData darkTheme = ThemeData(
     fontFamily: GoogleFonts.poppins().fontFamily,
