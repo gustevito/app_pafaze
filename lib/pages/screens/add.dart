@@ -36,8 +36,11 @@ class _MyWidgetState extends State<AddTodo>
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             const Text('Escreva o que você tem pafazê'),
-            TextField(
-              controller: _controller,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: TextField(
+                controller: _controller,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
