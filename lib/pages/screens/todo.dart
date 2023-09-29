@@ -1,0 +1,62 @@
+import 'package:flutter/material.dart';
+
+class TodoWidget extends StatefulWidget {
+  String message;
+
+  TodoWidget({super.key, required this.message});
+
+  @override
+  State<TodoWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<TodoWidget>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: EdgeInsets.fromLTRB(16, 5, 16, 5),
+          padding: EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            color: Color.fromARGB(31, 255, 255, 255),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Row(
+            children: [
+              Icon(
+                Icons.note,
+                color: Colors.blue,
+                size: 24.0,
+              ),
+              SizedBox(width: 16.0),
+              Expanded(
+                child: Text(
+                  widget.message,
+                  style: TextStyle(
+                    color: const Color.fromARGB(255, 255, 255, 255),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}

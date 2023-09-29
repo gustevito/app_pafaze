@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       darkTheme: darkTheme,
       debugShowCheckedModeBanner: false,
       theme: darkTheme,
-      home: const MyHomePage(title: 'pafaze'),
+      home: const MyHomePage(title: 'pafazê'),
     );
   }
 }

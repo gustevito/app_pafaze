@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myapp/pages/screens/add.dart';
 import 'package:myapp/pages/themes/darktheme.dart';
 
+import 'todo.dart';
+
 class MyHomePage extends StatefulWidget {
   final String title;
 
@@ -32,8 +34,29 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _noteContainer = [];
+
+    if (_notes.length > 0) {
+      _noteContainer.add(Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 50, 20, 20),
+            child: Text(
+              'Notas',
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ));
+    }
+
     for (var e in _notes) {
-      _noteContainer.add(_widgetMessage(e));
+      _noteContainer.add(TodoWidget(
+        message: e,
+      ));
     }
 
     return Scaffold(
@@ -46,29 +69,37 @@ class _MyHomePageState extends State<MyHomePage> {
               Icon(
                 Icons.menu,
                 color: Theme.of(context).colorScheme.primary,
-                size: 30,
+                size: 25,
               ),
               Text(
                 widget.title,
                 style: const TextStyle(
                   fontWeight: FontWeight.w800,
-                  letterSpacing: 14.0,
+                  letterSpacing: 16.0,
                 ),
               ),
               Icon(
                 Icons.more_vert,
                 color: Theme.of(context).colorScheme.primary,
-                size: 30,
+                size: 25,
               )
             ],
           )),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             if (_noteContainer.isEmpty) ...[
-              const Text(
-                  'Adicione a sua primeira nota para visualizá-la aqui!'),
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                    60, MediaQuery.sizeOf(context).height / 2.5, 60, 0),
+                child: const Text(
+                  'Adicione a sua primeira nota para visualizá-la aqui!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color.fromARGB(125, 255, 255, 255), fontSize: 18),
+                ),
+              ),
             ] else
               ..._noteContainer,
             /*Text(
