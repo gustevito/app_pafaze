@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:myapp/pages/screens/add.dart';
 import 'package:myapp/pages/themes/darktheme.dart';
 
@@ -109,6 +110,37 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      /* bottomNavigationBar: Container(
+        color: pzBlack,
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+          child: GNav(
+              backgroundColor: pzBlack,
+              color: pzWhite,
+              activeColor: pzWhite,
+              tabBackgroundColor: pzGrey,
+              gap: 8,
+              padding: EdgeInsets.all(10),
+              tabs: [
+                GButton(
+                  icon: Icons.home,
+                  text: 'home',
+                ),
+                GButton(
+                  icon: Icons.favorite,
+                  text: 'favorite',
+                ),
+                GButton(
+                  icon: Icons.search,
+                  text: 'search',
+                ),
+                GButton(
+                  icon: Icons.settings,
+                  text: 'settings',
+                ),
+              ]),
+        ),
+      ),*/
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           String? result = await showModalBottomSheet<String>(
