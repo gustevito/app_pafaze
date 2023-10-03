@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:myapp/pages/screens/add.dart';
+import 'package:myapp/pages/screens/drawer.dart';
+import 'package:myapp/pages/widgets/add.dart';
 import 'package:myapp/pages/themes/darktheme.dart';
 
-import 'todo.dart';
+import '../widgets/todo.dart';
 
 class MyHomePage extends StatefulWidget {
   final String title;
@@ -62,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       backgroundColor: pzGrey,
-      drawer: const Drawer(),
+      drawer: const DrawerAppBar(),
       appBar: AppBar(
         backgroundColor: pzBlack,
         title: Text(
@@ -84,11 +85,13 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         }),
         actions: [
-          Icon(
-            Icons.more_vert,
-            color: Theme.of(context).colorScheme.primary,
-            size: 25,
-          )
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.search,
+                color: Theme.of(context).colorScheme.primary,
+                size: 25,
+              ))
         ],
       ),
       body: SingleChildScrollView(

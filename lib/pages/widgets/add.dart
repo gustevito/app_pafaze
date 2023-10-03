@@ -11,12 +11,10 @@ class AddTodo extends StatefulWidget {
 class _MyWidgetState extends State<AddTodo>
     with SingleTickerProviderStateMixin {
   final TextEditingController _controller = TextEditingController();
-  late AnimationController _controllerAnimation;
 
   @override
   void initState() {
     super.initState();
-    _controllerAnimation = AnimationController(vsync: this);
   }
 
   @override
