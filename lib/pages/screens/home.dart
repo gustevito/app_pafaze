@@ -36,8 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     List<Widget> _noteContainer = [];
 
-    if (_notes.length > 0) {
-      _noteContainer.add(Row(
+    if (_notes.isNotEmpty) {
+      _noteContainer.add(const Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
@@ -62,30 +62,35 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       backgroundColor: pzGrey,
+      drawer: const Drawer(),
       appBar: AppBar(
-          backgroundColor: pzBlack,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Icon(
-                Icons.menu,
-                color: Theme.of(context).colorScheme.primary,
-                size: 25,
-              ),
-              Text(
-                widget.title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 16.0,
-                ),
-              ),
-              Icon(
-                Icons.more_vert,
-                color: Theme.of(context).colorScheme.primary,
-                size: 25,
-              )
-            ],
-          )),
+        backgroundColor: pzBlack,
+        title: Text(
+          widget.title,
+          style: const TextStyle(
+            fontWeight: FontWeight.w800,
+            letterSpacing: 16.0,
+          ),
+        ),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        leading: Builder(builder: (context) {
+          return IconButton(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: Icon(Icons.menu,
+                color: Theme.of(context).colorScheme.primary, size: 25),
+          );
+        }),
+        actions: [
+          Icon(
+            Icons.more_vert,
+            color: Theme.of(context).colorScheme.primary,
+            size: 25,
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
