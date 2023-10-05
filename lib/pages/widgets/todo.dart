@@ -45,7 +45,7 @@ class _MyWidgetState extends State<TodoWidget>
                 color: pzWhite,
                 size: 24.0,
               ),
-              SizedBox(width: 16.0),
+              const SizedBox(width: 16.0),
               Expanded(
                 child: Text(
                   widget.message,
