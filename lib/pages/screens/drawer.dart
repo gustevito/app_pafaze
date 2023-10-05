@@ -23,45 +23,60 @@ class DrawerAppBar extends StatelessWidget {
               title: Text('Ferramentas',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))),
 
-          _widgetContainer(title: 'Notas rápidas', icon: Icons.bolt),
-          _widgetContainer(title: 'Notas', icon: Icons.edit_note),
-          _widgetContainer(title: 'Checklist', icon: Icons.checklist),
-          _widgetContainer(title: 'Compras', icon: Icons.shopping_cart),
+          _widgetContainer(
+              title: 'Notas rápidas',
+              icon: Icons.bolt,
+              onTap: () {
+                Navigator.pop(context);
+              }),
+          _widgetContainer(title: 'Notas', icon: Icons.edit_note, onTap: () {}),
+          _widgetContainer(
+              title: 'Checklist', icon: Icons.checklist, onTap: () {}),
+          _widgetContainer(
+              title: 'Compras', icon: Icons.shopping_cart, onTap: () {}),
         ],
       ),
     );
   }
 
-  _widgetContainer({required String title, required IconData icon}) {
-    return Container(
-      margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
-      padding: EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: Color.fromARGB(10, 255, 255, 255),
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: Row(
-        children: [
-          Icon(
-            icon,
-            color: pzWhite,
-            size: 24.0,
+  _widgetContainer(
+      {required String title,
+      required IconData icon,
+      required Function onTap}) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(10),
+        onTap: () {
+          onTap();
+        },
+        child: Container(
+          padding: const EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            color: Color.fromARGB(10, 255, 255, 255),
+            borderRadius: BorderRadius.circular(10.0),
           ),
-          const SizedBox(width: 16.0),
-          Expanded(
-            child: Text(
-              title,
-              style: const TextStyle(
+          child: Row(
+            children: [
+              Icon(
+                icon,
                 color: pzWhite,
+                size: 24.0,
               ),
-            ),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    color: pzWhite,
+                  ),
+                ),
+              ),
+              const Icon(Icons.keyboard_arrow_right, color: pzWhite, size: 24),
+            ],
           ),
-          const Icon(Icons.keyboard_arrow_right, color: pzWhite, size: 24),
-        ],
+        ),
       ),
-    
-      
-    
     );
   }
 }
