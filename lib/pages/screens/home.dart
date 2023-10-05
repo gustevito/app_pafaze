@@ -21,16 +21,13 @@ class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _controller = TextEditingController();
   final List<String> _notes = [];
 
+  // adicionar nota
   void _incrementNote() {
     setState(() {
       if (_controller.text.isNotEmpty) {
         _notes.add(_controller.text);
       }
     });
-  }
-
-  Widget _widgetMessage(String messageText) {
-    return Container(color: Colors.green, child: Text(messageText));
   }
 
   @override
@@ -55,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ));
     }
 
+    // nota
     for (var e in _notes) {
       _noteContainer.add(TodoWidget(
         message: e,
