@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:myapp/pages/screens/appbar.dart';
 import 'package:myapp/pages/screens/drawer.dart';
 import 'package:myapp/pages/widgets/add.dart';
 import 'package:myapp/pages/themes/darktheme.dart';
 
+import '../../controllers/application_controller.dart';
 import '../widgets/todo.dart';
 
-class MyHomePage extends StatefulWidget {
-  final String title;
-
-  const MyHomePage({super.key, required this.title});
+class QuickNotes extends StatefulWidget {
+  const QuickNotes({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<QuickNotes> createState() => _QuickNotesState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _QuickNotesState extends State<QuickNotes> {
   //final Text _notePlaceholder = Text();
-
+  ApplicationController applicationController =
+      Get.put(ApplicationController());
   final TextEditingController _controller = TextEditingController();
   final List<String> _notes = [];
 
@@ -28,6 +30,13 @@ class _MyHomePageState extends State<MyHomePage> {
         _notes.add(_controller.text);
       }
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    applicationController.setPageSelected(PageOptions.pgQuickNotes);
   }
 
   @override
@@ -62,36 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: pzGrey,
       drawer: const DrawerAppBar(),
-      appBar: AppBar(
-        backgroundColor: pzBlack,
-        title: Text(
-          widget.title,
-          style: const TextStyle(
-            fontWeight: FontWeight.w800,
-            letterSpacing: 16.0,
-          ),
-        ),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        leading: Builder(builder: (context) {
-          return IconButton(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            icon: Icon(Icons.menu,
-                color: Theme.of(context).colorScheme.primary, size: 25),
-          );
-        }),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.search,
-                color: Theme.of(context).colorScheme.primary,
-                size: 25,
-              ))
-        ],
-      ),
+      appBar: MyAppBar(),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

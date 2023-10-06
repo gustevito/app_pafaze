@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:myapp/pages/screens/notes.dart';
+import 'package:myapp/pages/screens/quicknotes.dart';
 import 'package:myapp/pages/themes/darktheme.dart';
 
-class DrawerAppBar extends StatelessWidget {
+import '../../controllers/application_controller.dart';
+
+class DrawerAppBar extends StatefulWidget {
   const DrawerAppBar({super.key});
 
-// login header (not functional yet)
+  @override
+  _DrawerAppBarState createState() => _DrawerAppBarState();
+}
+
+class _DrawerAppBarState extends State<DrawerAppBar> {
+  ApplicationController applicationController =
+      Get.put(ApplicationController());
+  bool isScreenSelected = false; // Variável para controlar o estado da seleção
 
   @override
   Widget build(BuildContext context) {
@@ -16,24 +28,63 @@ class DrawerAppBar extends StatelessWidget {
             accountName: Text('John Doe'),
             accountEmail: Text('johndoe@gmail.com'),
           ),
-
-          // note types list
-
           const ListTile(
               title: Text('Ferramentas',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))),
-
           _widgetContainer(
-              title: 'Notas rápidas',
-              icon: Icons.bolt,
-              onTap: () {
+            title: 'Notas rápidas',
+            icon: Icons.bolt,
+            onTap: () {
+              if (applicationController.getPageSelected() ==
+                  PageOptions.pgQuickNotes) {
                 Navigator.pop(context);
-              }),
-          _widgetContainer(title: 'Notas', icon: Icons.edit_note, onTap: () {}),
+              } else {
+                applicationController.setPageSelected(PageOptions.pgQuickNotes);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => QuickNotes(),
+                  ),
+                );
+              }
+            },
+          ),
           _widgetContainer(
-              title: 'Checklist', icon: Icons.checklist, onTap: () {}),
+            title: 'Notas',
+            icon: Icons.edit_note,
+            onTap: () {
+              if (applicationController.getPageSelected() ==
+                  PageOptions.pgNotes) {
+                Navigator.pop(context);
+              } else {
+                applicationController.setPageSelected(PageOptions.pgNotes);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyNotes()));
+              }
+              // Executar ação apenas se a tela não estiver selecionada
+              // Coloque sua lógica aqui
+            },
+          ),
           _widgetContainer(
-              title: 'Compras', icon: Icons.shopping_cart, onTap: () {}),
+            title: 'Checklist',
+            icon: Icons.checklist,
+            onTap: () {
+              if (!isScreenSelected) {
+                // Executar ação apenas se a tela não estiver selecionada
+                // Coloque sua lógica aqui
+              }
+            },
+          ),
+          _widgetContainer(
+            title: 'Compras',
+            icon: Icons.shopping_cart,
+            onTap: () {
+              if (!isScreenSelected) {
+                // Executar ação apenas se a tela não estiver selecionada
+                // Coloque sua lógica aqui
+              }
+            },
+          ),
         ],
       ),
     );
@@ -48,6 +99,10 @@ class DrawerAppBar extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
         onTap: () {
+          setState(() {
+            // Defina isScreenSelected para true quando um container for pressionado
+            isScreenSelected = true;
+          });
           onTap();
         },
         child: Container(
