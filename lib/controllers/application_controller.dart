@@ -22,4 +22,5 @@ enum PageOptions {
   pgNotes,
   pgQuickNotes,
   pgChecklist,
+  pgShopping,
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myapp/pages/themes/darktheme.dart';
-import 'pages/screens/quicknotes.dart';
+import 'pages/screens/checklist.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       darkTheme: darkTheme,
       debugShowCheckedModeBanner: false,
       theme: darkTheme,
-      home: const QuickNotes(),
+      home: const MyCheckList(),
     );
   }
 }

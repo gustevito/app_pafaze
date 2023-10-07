@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:myapp/pages/widgets/appbar.dart';
 import 'package:myapp/pages/screens/drawer.dart';
 
-class MyQuickNotes extends StatefulWidget {
-  const MyQuickNotes({super.key});
+class MyShoppingList extends StatefulWidget {
+  const MyShoppingList({super.key});
 
   @override
-  State<MyQuickNotes> createState() => _MyQuickNotesState();
+  State<MyShoppingList> createState() => _MyShoppingListState();
 }
 
-class _MyQuickNotesState extends State<MyQuickNotes> {
+class _MyShoppingListState extends State<MyShoppingList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

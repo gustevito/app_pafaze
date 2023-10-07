@@ -12,6 +12,7 @@ class TodoWidget extends StatefulWidget {
 
 class _MyWidgetState extends State<TodoWidget>
     with SingleTickerProviderStateMixin {
+  bool? isChecked = false;
   late AnimationController _controller;
 
   @override
@@ -28,36 +29,48 @@ class _MyWidgetState extends State<TodoWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+      child: CheckboxListTile(
+        title: Text(
+          widget.message,
+          style: const TextStyle(color: pzWhite, fontSize: 16),
+        ),
+        value: isChecked,
+        controlAffinity: ListTileControlAffinity.leading,
+        onChanged: (bool? newValue) {
+          setState(() {
+            isChecked = newValue;
+          });
+        },
+        activeColor: pzWhite,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        tileColor: Color.fromARGB(10, 255, 255, 255),
+      ),
+    );
+  }
+}
+
+
+
+/*Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: EdgeInsets.fromLTRB(16, 5, 16, 5),
-          padding: EdgeInsets.all(16.0),
+          margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+          padding: EdgeInsets.all(18),
           decoration: BoxDecoration(
-            color: Color.fromARGB(31, 255, 255, 255),
-            borderRadius: BorderRadius.circular(10.0),
+            color: Color.fromARGB(10, 255, 255, 255),
+            borderRadius: BorderRadius.circular(15.0),
           ),
           child: Row(
             children: [
-              const Icon(
-                Icons.note,
-                color: pzWhite,
-                size: 24.0,
-              ),
-              const SizedBox(width: 16.0),
-              Expanded(
-                child: Text(
-                  widget.message,
-                  style: const TextStyle(
-                    color: pzWhite,
-                  ),
-                ),
+              Text(
+                widget.message,
+                style: const TextStyle(color: pzWhite, fontSize: 16),
               ),
             ],
           ),
         ),
       ],
-    );
-  }
-}
+    );*/

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/screens/appbar.dart';
+import 'package:myapp/pages/widgets/appbar.dart';
 import 'package:myapp/pages/screens/drawer.dart';
 
 class MyNotes extends StatefulWidget {
