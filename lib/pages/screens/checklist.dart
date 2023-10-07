@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:myapp/controllers/checklist_controller.dart';
+import 'package:myapp/models/checklist_model.dart';
 import 'package:myapp/pages/widgets/appbar.dart';
 import 'package:myapp/pages/screens/drawer.dart';
 import 'package:myapp/pages/widgets/add.dart';
@@ -9,8 +11,6 @@ import '../../controllers/application_controller.dart';
 import '../widgets/todo.dart';
 
 class MyCheckList extends StatefulWidget {
-  
-
   const MyCheckList({super.key});
 
   @override
@@ -21,14 +21,21 @@ class _MyCheckListState extends State<MyCheckList> {
   //final Text _notePlaceholder = Text();
   ApplicationController applicationController =
       Get.put(ApplicationController());
+
+  ChecklistController checklistController = Get.put(ChecklistController());
+
   final TextEditingController _controller = TextEditingController();
-  final List<String> _notes = [];
+  //final List<String> _notes = [];
 
   // adicionar nota
   void _incrementNote() {
     setState(() {
       if (_controller.text.isNotEmpty) {
-        _notes.add(_controller.text);
+        //_notes.add(_controller.text);
+        checklistController.addIntoList(ChecklistModel(
+            id: checklistController.listChecklistModel.length + 1,
+            checked: false,
+            message: _controller.text));
       }
     });
   }
@@ -44,7 +51,7 @@ class _MyCheckListState extends State<MyCheckList> {
   Widget build(BuildContext context) {
     List<Widget> _noteContainer = [];
 
-    if (_notes.isNotEmpty) {
+    if (checklistController.listChecklistModel.isNotEmpty) {
       _noteContainer.add(const Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -63,9 +70,9 @@ class _MyCheckListState extends State<MyCheckList> {
     }
 
     // nota
-    for (var e in _notes) {
+    for (var e in checklistController.listChecklistModel) {
       _noteContainer.add(TodoWidget(
-        message: e,
+        checklistModel: e,
       ));
     }
 
@@ -116,6 +123,3 @@ class _MyCheckListState extends State<MyCheckList> {
     );
   }
 }
-
-
-

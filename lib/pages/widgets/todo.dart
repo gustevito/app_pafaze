@@ -1,10 +1,16 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:myapp/controllers/checklist_controller.dart';
 import 'package:myapp/pages/themes/darktheme.dart';
 
-class TodoWidget extends StatefulWidget {
-  String message;
+import '../../models/checklist_model.dart';
 
-  TodoWidget({super.key, required this.message});
+class TodoWidget extends StatefulWidget {
+  ChecklistModel checklistModel;
+
+  TodoWidget({super.key, required this.checklistModel});
 
   @override
   State<TodoWidget> createState() => _MyWidgetState();
@@ -14,6 +20,7 @@ class _MyWidgetState extends State<TodoWidget>
     with SingleTickerProviderStateMixin {
   bool? isChecked = false;
   late AnimationController _controller;
+  ChecklistController checklistController = Get.put(ChecklistController());
 
   @override
   void initState() {
@@ -29,25 +36,31 @@ class _MyWidgetState extends State<TodoWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-      child: CheckboxListTile(
-        title: Text(
-          widget.message,
-          style: const TextStyle(color: pzWhite, fontSize: 16),
-        ),
-        value: isChecked,
-        controlAffinity: ListTileControlAffinity.leading,
-        onChanged: (bool? newValue) {
-          setState(() {
-            isChecked = newValue;
-          });
-        },
-        activeColor: pzWhite,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        tileColor: Color.fromARGB(10, 255, 255, 255),
-      ),
-    );
+    int number = 0;
+    return Dismissible(
+        key: Key(widget.checklistModel.id.toString()),
+        child: Card(
+          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+          child: CheckboxListTile(
+            title: Text(
+              widget.checklistModel.message,
+              style: const TextStyle(color: pzWhite, fontSize: 16),
+            ),
+            value: widget.checklistModel.checked,
+            controlAffinity: ListTileControlAffinity.leading,
+            onChanged: (bool? newValue) {
+              setState(() {
+                widget.checklistModel.checked = newValue ?? false;
+                checklistController.setChecked(widget.checklistModel);
+                isChecked = newValue;
+              });
+            },
+            activeColor: pzWhite,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            tileColor: Color.fromARGB(10, 255, 255, 255),
+          ),
+        ));
   }
 }
 
