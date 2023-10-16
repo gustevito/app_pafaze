@@ -1,6 +1,6 @@
 # p  a  f  a  z  ê
 
-"pafazê" é um aplicativo de notas desenvolvido em Flutter, com a proposta de oferecer uma solução simples, leve e multifuncional para ajudar os usuários a organizarem suas tarefas, listas de compras e notas. O nome "pafazê" é um trocadilho derivado do termo "ToDo" em inglês!
+"pafazê" é um aplicativo de notas "To Do" desenvolvido em Flutter, com a proposta de oferecer uma solução simples, leve e multifuncional para ajudar os usuários a organizarem suas tarefas, listas de compras (com cálculo de valores) e notas. O nome "pafazê" é um trocadilho derivado do termo "ToDo" em inglês!
 
 ## Funcionalidades Principais
 
