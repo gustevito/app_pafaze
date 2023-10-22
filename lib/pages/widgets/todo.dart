@@ -43,11 +43,19 @@ class _MyWidgetState extends State<TodoWidget>
           setState(() {});
         },
         child: Card(
+          color: widget.checklistModel.checked
+              ? Theme.of(context).colorScheme.tertiary
+              : Theme.of(context).colorScheme.background,
           margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
           child: CheckboxListTile(
             title: Text(
               widget.checklistModel.message,
-              style: const TextStyle(color: pzWhite, fontSize: 16),
+              style: widget.checklistModel.checked
+                  ? const TextStyle(
+                      color: pzWhite,
+                      fontSize: 16,
+                      decoration: TextDecoration.lineThrough)
+                  : const TextStyle(),
             ),
             value: widget.checklistModel.checked,
             controlAffinity: ListTileControlAffinity.leading,

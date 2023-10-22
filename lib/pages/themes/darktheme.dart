@@ -6,6 +6,7 @@ const Color pzGreen = Color(0xFF3ABB29); // Authorizations and other functions
 
 const Color pzBlack = Color.fromARGB(255, 34, 34, 34); // Navbar
 const Color pzGrey = Color.fromARGB(255, 48, 48, 48); // Background
+const Color pzGrey1 = Color.fromARGB(20, 48, 48, 48);
 
 const Color pzYellow = Color(0xFFF3C048);
 const Color pzWhite = Color(0xFFFFFFFF);
@@ -18,4 +19,5 @@ ThemeData darkTheme = ThemeData(
       background: pzGrey,
       primary: Colors.white,
       secondary: pzBlack,
+      tertiary: pzGrey1,
     ));
