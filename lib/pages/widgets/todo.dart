@@ -52,7 +52,7 @@ class _MyWidgetState extends State<TodoWidget>
               widget.checklistModel.message,
               style: widget.checklistModel.checked
                   ? const TextStyle(
-                      color: pzWhite,
+                      color: pzWhite1,
                       fontSize: 16,
                       decoration: TextDecoration.lineThrough)
                   : const TextStyle(),
