@@ -4,5 +4,5 @@ class ChecklistModel {
   bool checked;
 
   ChecklistModel(
-      {required this.id, required this.message, required this.checked});
+      {required this.id, required this.message, required this.checked,});
 }

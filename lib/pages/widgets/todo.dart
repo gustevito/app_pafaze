@@ -38,7 +38,10 @@ class _MyWidgetState extends State<TodoWidget>
   Widget build(BuildContext context) {
     int number = 0;
     return Dismissible(
-        key: Key(widget.checklistModel.id.toString()),
+        key: ValueKey(widget.checklistModel.id.toString()),
+        onDismissed: (direction) {
+          setState(() {});
+        },
         child: Card(
           margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
           child: CheckboxListTile(
